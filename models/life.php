@@ -1,8 +1,18 @@
 <?php
 namespace Der\ChickenModel;
 
+require_once("chicken.php");
+
 class Life
 {
+    /**
+     * Life constructor.
+     *
+     * @param integer   $weeks          The number of weeks the Life simulator will go over.
+     * @param integer   $roosters       The number of roosters (non egg-layers) that you start with.
+     * @param integer   $hens           The number of hens (egg-layers) that you start with.
+     * @param integer   $foxes          The number of foxes that will try and eat all the chickens.
+     */
     public function __construct($weeks, $roosters, $hens, $foxes)
     {
         $this->weeks = $weeks;
@@ -12,6 +22,9 @@ class Life
         $this->eggs = 0;
     }
 
+    /**
+     * This will take the number of weeks and simulate them one at a time.
+     */
     public function run()
     {
         foreach (range(1, $this->weeks) as $week) {
@@ -19,21 +32,41 @@ class Life
         }
     }
 
+    /**
+     * Returns total number of chickens in the "coop"
+     *
+     * @return integer     Returns count of roosters + hens
+     */
     public function getChickenCount()
     {
         return $this->getRoosterCount() + $this->getHenCount();
     }
 
+    /**
+     * Returns total number of roosters in the "coop"
+     *
+     * @return integer     Returns count of roosters
+     */
     public function getRoosterCount()
     {
         return count($this->roosters);
     }
 
+    /**
+     * Returns total number of hens in the "coop"
+     *
+     * @return integer     Returns count of hens + hens
+     */
     public function getHenCount()
     {
         return count($this->hens);
     }
 
+
+    /**
+     * Simulates a single week: how many chickens were eaten by foxes, how many eggs were
+     * laid, and how many chicks (and genders) hatched from those eggs
+     */
     private function runWeek($week)
     {
         $r = count($this->roosters);
@@ -47,6 +80,10 @@ class Life
         $this->checkChicksHatched($week);
     }
 
+    /**
+     * This will cycle through all the roosters and hens, simulates their chance
+     * to be "eaten" and removes them from the list if they are.
+     */
     private function checkFoxes($week)
     {
         $eaten_roosters = 0;
@@ -69,6 +106,9 @@ class Life
         echo "Week $week: $eaten_roosters roosters and $eaten_hens hens were eaten by a fox!<br/>";
     }
 
+    /**
+     * This will check how many eggs were laid by all egg-laying hens in the "coop"
+     */
     private function checkEggsLaid($week)
     {
         $total = 0;
@@ -82,6 +122,9 @@ class Life
         echo "Week $week: $total eggs were laid.<br/>";
     }
 
+    /**
+     * This will check how many chicks were hatched from the eggs in the "coop"
+     */
     private function checkChicksHatched($week)
     {
         $hatched = $this->eggs * 0.05;
@@ -102,6 +145,11 @@ class Life
         echo "Week $week: $new_hens new hens and $new_roosters new roosters were hatched.<br/>";
     }
 
+    /**
+     * This will create male Chicken models for each Rooster specified when the program was loaded.
+     *
+     * @return array        Returns array of roosters to be loaded into $this->roosters
+     */
     private function loadRoosters($num)
     {
         $arr = array();
@@ -111,6 +159,11 @@ class Life
         return $arr;
     }
 
+    /**
+     * This will create female Chicken models for each Hen specified when the program was loaded.
+     *
+     * @return array        Returns array of hens to be loaded into $this->hens
+     */
     private function loadHens($num)
     {
         $arr = array();
