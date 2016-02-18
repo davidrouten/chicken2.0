@@ -103,7 +103,7 @@ class Animal
      * @return string     Returns string representing the animal including its gender, type,
      * and age in years.
      */
-    public function to_string()
+    public function toString()
     {
         return ucfirst($this->gender) . " $this->getClassName() - $this->age year(s) old<br/>";
     }

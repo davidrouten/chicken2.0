@@ -66,6 +66,8 @@ class Life
     /**
      * Simulates a single week: how many chickens were eaten by foxes, how many eggs were
      * laid, and how many chicks (and genders) hatched from those eggs
+     *
+     * Displays a summary line of number of roosters, hens, and eggs that currently exist.
      */
     private function runWeek($week)
     {
