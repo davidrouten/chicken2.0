@@ -30,10 +30,10 @@ class Animal
     public function sleep()
     {
         if ($this->is_sleeping) {
-            return $this->class . " is already asleep!<br/>";
+            return $this->getClassName() . " is already asleep!<br/>";
         } else {
             $this->is_sleeping = true;
-            return $this->class . " is now asleep.<br/>";
+            return $this->getClassName() . " is now asleep.<br/>";
         }
     }
 
@@ -42,13 +42,13 @@ class Animal
      *
      * @return string     Returns string describing action that occurred.
      */
-    public function wake_up()
+    public function wakeUp()
     {
         if ($this->is_sleeping) {
             $this->is_sleeping = false;
-            return $this->class . ' is now awake.<br/>';
+            return $this->getClassName() . ' is now awake.<br/>';
         } else {
-            return $this->class . ' is already awake!<br/>';
+            return $this->getClassName() . ' is already awake!<br/>';
         }
     }
 
@@ -57,9 +57,9 @@ class Animal
      *
      * @return string     Returns string describing the animal and its location.
      */
-    public function current_location()
+    public function currentLocation()
     {
-        return "$this->class is in $this->location.<br/>";
+        return "$this->getClassName() is in $this->location.<br/>";
     }
 
     /**
@@ -68,13 +68,13 @@ class Animal
      * @param string  $new_location   The animal's new location, non-proper nouns should be prefaced with 'the'.
      * @return string     Returns string describing the animal moving to its new location.
      */
-    public function move_to($new_location = null)
+    public function moveTo($new_location = null)
     {
         if ($new_location == null) {
             throw new Exception("Location can't be a null value.");
         }
         $this->location = $new_location;
-        return "$this->class moved to $this->location.<br/>";
+        return "$this->getClassName() moved to $this->location.<br/>";
     }
 
     /**
@@ -105,6 +105,6 @@ class Animal
      */
     public function to_string()
     {
-        return ucfirst($this->gender) . " $this->class - $this->age year(s) old<br/>";
+        return ucfirst($this->gender) . " $this->getClassName() - $this->age year(s) old<br/>";
     }
 }

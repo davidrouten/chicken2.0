@@ -24,7 +24,7 @@ class Chicken extends Animal
      * @return string   Returns string describing the animal and the egg it laid, or a message
      *                  letting the user know why it couldn't lay an egg.
      */
-    public function lay_egg()
+    public function layEgg()
     {
         if (strtolower($this->gender) == 'female') {
             return $this->class . ' laid an egg!<br/>';
@@ -42,11 +42,11 @@ class Chicken extends Animal
      * @return string   Returns string describing the animal and the egg(s) it laid, or a message
      *                  letting the user know why it couldn't lay the egg(s).
      */
-    public function lay_eggs($num = 1)
+    public function layEggs($num = 1)
     {
         if (strtolower($this->gender) == 'female') {
             if ($num == 1) {
-                $this->lay_egg();
+                $this->layEgg();
             } else {
                 return $this->class . " laid $num eggs!<br/>";
             }
