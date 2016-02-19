@@ -134,7 +134,7 @@ class Life
         $new_roosters = 0;
 
         foreach (range(0, (integer) $hatched) as $chick) {
-            if (mt_rand(0, 1) == 0) {
+            if (mt_rand(0, 1) === 0) {
                 $this->hens[] = new Chicken('female', 1);
                 $new_hens += 1;
             } else {

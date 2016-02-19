@@ -3,6 +3,14 @@ namespace Der\ChickenModel;
 
 class Animal
 {
+    protected $gender;
+    protected $age;
+    protected $is_sleeping;
+    protected $location;
+    protected $voice;
+    protected $loud_voice;
+    protected $class;
+
     /**
      * Animal constructor.
      *
@@ -30,10 +38,10 @@ class Animal
     public function sleep()
     {
         if ($this->is_sleeping) {
-            return $this->getClassName() . " is already asleep!<br/>";
+            return $this->class . " is already asleep!<br/>";
         } else {
             $this->is_sleeping = true;
-            return $this->getClassName() . " is now asleep.<br/>";
+            return $this->class . " is now asleep.<br/>";
         }
     }
 
@@ -46,9 +54,9 @@ class Animal
     {
         if ($this->is_sleeping) {
             $this->is_sleeping = false;
-            return $this->getClassName() . ' is now awake.<br/>';
+            return $this->class . ' is now awake.<br/>';
         } else {
-            return $this->getClassName() . ' is already awake!<br/>';
+            return $this->class . ' is already awake!<br/>';
         }
     }
 
@@ -59,7 +67,7 @@ class Animal
      */
     public function currentLocation()
     {
-        return "$this->getClassName() is in $this->location.<br/>";
+        return "$this->class is in $this->location.<br/>";
     }
 
     /**
@@ -70,11 +78,11 @@ class Animal
      */
     public function moveTo($new_location = null)
     {
-        if ($new_location == null) {
+        if ($new_location === null) {
             throw new Exception("Location can't be a null value.");
         }
         $this->location = $new_location;
-        return "$this->getClassName() moved to $this->location.<br/>";
+        return "$this->class moved to $this->location.<br/>";
     }
 
     /**
@@ -105,6 +113,29 @@ class Animal
      */
     public function toString()
     {
-        return ucfirst($this->gender) . " $this->getClassName() - $this->age year(s) old<br/>";
+        return ucfirst($this->gender) . " $this->class - $this->age year(s) old<br/>";
+    }
+
+    /**
+     * Getters
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    public function getIsSleeping()
+    {
+        return $this->is_sleeping;
+    }
+
+    public function getLocation()
+    {
+        return $this->location;
     }
 }

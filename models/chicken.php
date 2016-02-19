@@ -26,9 +26,9 @@ class Chicken extends Animal
      */
     public function layEgg()
     {
-        if (strtolower($this->gender) == 'female') {
+        if (strtolower($this->gender) === 'female') {
             return $this->class . ' laid an egg!<br/>';
-        } elseif(strtolower($this->gender) == 'male') {
+        } elseif(strtolower($this->gender) === 'male') {
             return "Males dont lay eggs...<br/>";
         } else {
             return 'Cannot determine gender of ' . $this->gender . '.<br/>';
@@ -44,13 +44,13 @@ class Chicken extends Animal
      */
     public function layEggs($num = 1)
     {
-        if (strtolower($this->gender) == 'female') {
-            if ($num == 1) {
+        if (strtolower($this->gender) === 'female') {
+            if ($num === 1) {
                 $this->layEgg();
             } else {
                 return $this->class . " laid $num eggs!<br/>";
             }
-        } elseif(strtolower($this->gender) == 'male') {
+        } elseif(strtolower($this->gender) === 'male') {
             return "Males don't lay eggs...<br/>";
         } else {
             return 'Cannot determine gender of ' . $this->gender . '.<br/>';
